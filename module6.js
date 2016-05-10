@@ -1,14 +1,15 @@
-module.exports = {
+var fs = require('fs');
+var ret = [];
 
-    comext: function (path, ext, data){
-      var caminhando = require('path');
-      for ( var i in data){
-        if (caminhando.extname(data[i]) == ext){
-          console.log(data[i]);
+module.exports = function (path, ext, callback){
+    fs.readdir(path, function (err, files){
+        var path = require('path');
 
+        for(var file of files){
+          if(path.extname(file) == ext){
+              ret.push(file);
+          }
         }
-      }
-
-  }
-
-}
+        callback(ret);
+    });
+};

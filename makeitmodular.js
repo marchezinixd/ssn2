@@ -1,8 +1,9 @@
-var fs = require('fs');
 var path = process.argv[2];
-var qse = process.argv[3];
-var ext = '.' + qse;
+var extention = '.' + process.argv[3];
 
-var modular =  require('./module6.js');
-
-modular.comext(path, ext);
+var modulo = require('./module6.js');
+modulo(path, extention, function(arquivos){
+  for(i=0;i<arquivos.length;i++){
+    	console.log(arquivos[i]);
+  }
+});
